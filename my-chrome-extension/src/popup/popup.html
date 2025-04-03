@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Password Reset</title>
+</head>
+<body>
+    <div class="popup-container">
+        <div class="card">
+            <img src="../images/logo.svg" alt="Logo" class="logo" style="display: none;">
+            <div id="instructions">
+                <h1>Instructions</h1>
+                <p>Follow these steps to reset your user's Active Directory password:</p>
+                <ol>
+                    <li>Enter the username of the user.</li>
+                    <li>Enter the old password of the user.</li>
+                    <li>Enter the new password for the user.</li>
+                    <li>Click the "Reset Password" button.</li>
+                </ol>
+                <h2>Setting Up Azure AD Connection</h2>
+                <p>To reset the password using the Azure AD API, you need to set up a connection to Azure AD. Follow these steps:</p>
+                <ol>
+                    <li>Register your application in the Azure portal.</li>
+                    <li>Configure the required API permissions for Microsoft Graph.</li>
+                    <li>Obtain the client ID and client secret for your application.</li>
+                    <li>Use the OAuth 2.0 client credentials flow to obtain an access token. You can use tools like Postman or write a script to get the token.</li>
+                </ol>
+                <p>Example request to obtain the access token:</p>
+                <pre><code>POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id={client_id}&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret={client_secret}&grant_type=client_credentials
+</code></pre>
+                <p>Replace <code>{tenant}</code>, <code>{client_id}</code>, and <code>{client_secret}</code> with your actual tenant ID, client ID, and client secret.</p>
+                <form id="azure-ad-form">
+                    <label for="tenant-id">Tenant ID:</label>
+                    <input type="text" id="tenant-id" name="tenant-id" required>
+                    
+                    <label for="client-id">Client ID:</label>
+                    <input type="text" id="client-id" name="client-id" required>
+                    
+                    <label for="client-secret">Client Secret:</label>
+                    <input type="password" id="client-secret" name="client-secret" required>
+                    
+                    <button type="submit"><i class="fas fa-save"></i> Save</button>
+                </form>
+                <button id="next-button"><i class="fas fa-arrow-right"></i> Next</button>
+            </div>
+            <div id="azure-ad-credentials" style="display: none;">
+                <h1>Azure AD Credentials</h1>
+                <form id="azure-ad-form">
+                    <label for="client-id">Client ID:</label>
+                    <input type="text" id="client-id" name="client-id" required>
+                    
+                    <label for="client-secret">Client Secret:</label>
+                    <input type="password" id="client-secret" name="client-secret" required>
+                    
+                    <label for="tenant-id">Tenant ID:</label>
+                    <input type="text" id="tenant-id" name="tenant-id" required>
+                    
+                    <button type="submit"><i class="fas fa-save"></i> Save</button>
+                </form>
+            </div>
+            <div id="form-container" style="display: none;">
+                <div style="display: flex; justify-content: space-between;">
+                    <button id="back-button"><i class="fas fa-arrow-left"></i> Back</button>
+                </div>
+                <h1>Reset Active Directory Password</h1>
+                <form id="reset-password-form">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    
+                    <label for="old-password">Old Password:</label>
+                    <input type="password" id="old-password" name="old-password" required>
+                    
+                    <label for="new-password">New Password:</label>
+                    <input type="password" id="new-password" name="new-password" required>
+                    
+                    <button type="submit"><i class="fas fa-sync-alt"></i> Reset Password</button>
+                </form>
+                <div id="feedback"></div>
+            </div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

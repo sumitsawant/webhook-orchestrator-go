@@ -1,0 +1,26 @@
+{
+  "name": "news-browser-extension",
+  "version": "1.0.0",
+  "description": "A browser extension that displays live news in the browser.",
+  "main": "src/background.js",
+  "scripts": {
+    "build": "echo 'Building the extension...'",
+    "test": "echo 'Running tests...'",
+    "start": "echo 'Starting the extension...'"
+  },
+  "keywords": [
+    "browser",
+    "extension",
+    "news",
+    "live"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.0.0",
+    "webpack-cli": "^4.0.0"
+  }
+}
