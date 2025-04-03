@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  read_timeout: 10
+  write_timeout: 10
+
+callback:
+  max_retries: 3
+  base_delay_secs: 1
+
+third_party:
+  timeout_secs: 10
+
+tls:
+  enabled: false
+  cert_file: "cert.pem"
+  key_file: "key.pem"
