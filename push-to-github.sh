@@ -4,7 +4,7 @@
 GITHUB_USERNAME="sumitsawant"               # ✅ Replace if needed
 REPO_NAME="webhook-orchestrator-go"         # ✅ Match your GitHub repo name
 COMMIT_MSG="Initial commit: Webhook Orchestrator in Go"
-REMOTE_URL="https://github.com/$GITHUB_USERNAME/$REPO_NAME.git"
+REMOTE_URL="https://github.com/sumitsawant/webhook-orchestrator-go"
 
 # === SCRIPT START ===
 echo "⚙️  Setting up Git repository..."
